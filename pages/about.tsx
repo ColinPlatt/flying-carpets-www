@@ -24,7 +24,7 @@ const About: NextPage = () => {
         
 
         <h1 className={styles.title}>
-          WTF is <a href="/">Warp</a>? {' '}
+          WTF is <link href="/">Warp</link>? {' '}
         </h1>
 
         <a>
