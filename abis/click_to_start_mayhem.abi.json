@@ -1,0 +1,108 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32[2]",
+        "name": "_hashChecks",
+        "type": "bytes32[2]"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "Where",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "Accomplice",
+        "type": "address"
+      }
+    ],
+    "name": "MayhemStarted",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes[2]",
+        "name": "what",
+        "type": "bytes[2]"
+      }
+    ],
+    "name": "click_to_start_the_mayhem",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "where",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "accomplice",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "deployedAccomplice",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "deployedWhere",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "hashCheck0",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "hashCheck1",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
