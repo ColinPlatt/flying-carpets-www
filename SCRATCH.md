@@ -1,0 +1,13 @@
+## global states
+- State 0 - unlaunched: click_to_start_mayhem is the only option
+- State 1 - warp0:
+    -- State 1a - Claims (< 7 days post warp0 deployment)
+        --- Claim with Rugs (Check user balance of eligible Rugs !=0)
+        --- Claim with ETH
+    -- State 1b - (> 7 days post warp0 deployment)
+        --- warp() to warp1
+- State 2 - warpN
+    -- Start 2a - Claims (< 30 days post warpN deployment)
+        --- Claim with warpN-1 (Check user balance of warpN-1 !=0)
+    -- State 2b - (> 30 days post warp0 deployment)
+        --- warp() to warpN+1
