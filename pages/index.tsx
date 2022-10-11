@@ -46,7 +46,7 @@ const Home: NextPage = () => {
           </a>
           <a href="rugs" className={styles.card}>
             <h2>Claim with SudoRugs NFTs &rarr;</h2>
-            <p>See if you're eligible to claim warps.</p>
+            <p>See if you&apos;re eligible to claim warps.</p>
           </a>
           <a href="claim" className={styles.card}>
             <h2>Claim with ETH &rarr;</h2>
