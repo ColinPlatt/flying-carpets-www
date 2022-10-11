@@ -50,7 +50,7 @@ const Home: NextPage = () => {
           </a>
           <a href="claim" className={styles.card}>
             <h2>Claim with ETH &rarr;</h2>
-            <p>Grab warps before we take off, and it's too late.</p>
+            <p>Grab warps before we take off, and it&apos;s too late.</p>
           </a>
         </div>
       </main>
