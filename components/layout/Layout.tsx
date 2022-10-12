@@ -1,5 +1,6 @@
 import { Container, Flex, Link, SimpleGrid, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { BalanceBox } from '../info/BalanceBox'
 import NextLink from 'next/link'
 import React from 'react'
 //import { Head, MetaProps } from './Head'
@@ -18,7 +19,7 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
       <header>
         <Container maxWidth="container.xl">
           <SimpleGrid
-            columns={[1, 1, 1, 2]}
+            columns={[1, null, 2]}
             alignItems="center"
             justifyContent="space-between"
             py="8"
@@ -31,11 +32,21 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
               alignItems={'center'}
               justifyContent={['flex-start', null, null, 'flex-end']}
             >
-              <ConnectButton 
-                label='Get Rugged'
-                accountStatus='address'
-                chainStatus='none'
-              />
+            <SimpleGrid columns={[1,2]}
+                        alignItems="center"
+                        justifyContent="space-between"
+              >
+              <Flex px="2">
+                <BalanceBox />
+              </Flex>
+              <Flex px="2">
+                <ConnectButton 
+                  label='Get Rugged'
+                  accountStatus='address'
+                  chainStatus='none'
+                />
+              </Flex>
+            </SimpleGrid>
             </Flex>
           </SimpleGrid>
         </Container>
