@@ -1,7 +1,8 @@
 import '../styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import type { AppProps } from 'next/app';
-import { RainbowKitProvider, midnightTheme, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import merge from 'lodash.merge';
+import { RainbowKitProvider, lightTheme, Theme, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -29,6 +30,23 @@ const { connectors } = getDefaultWallets({
   chains,
 });
 
+const customTheme = merge(lightTheme(), {
+  colors: {
+    accentColor: 'LightPink',
+    accentColorForeground: '#0d76fc',
+    actionButtonSecondaryBackground: 'LightPink',
+    modalBackground: 'LightPink',
+    menuItemBackground: 'LightPink',
+    closeButtonBackground: 'LightPink',
+    connectButtonBackground: 'LightPink',
+    downloadBottomCardBackground: 'LightPink',
+    downloadTopCardBackground: 'LightPink',
+  },
+  fonts: {
+    body: 'aladdin',
+  },
+} as Theme);
+
 const wagmiClient = createClient({
   autoConnect: true,
   connectors,
@@ -41,12 +59,14 @@ function WarpApp({ Component, pageProps }: AppProps) {
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider 
         chains={chains}
-        coolMode
-        theme={midnightTheme({
-          borderRadius: 'medium'
-        })} 
+        theme={customTheme} 
         >
         <Component {...pageProps} />
+        <style global jsx>{`
+          body {
+            background: LightSkyBlue;
+          }
+        `}</style>
       </RainbowKitProvider>
     </WagmiConfig>
   );

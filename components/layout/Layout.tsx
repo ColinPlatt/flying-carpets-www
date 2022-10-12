@@ -22,6 +22,7 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
             alignItems="center"
             justifyContent="space-between"
             py="8"
+            px="8"
           >
             <Flex py={[4, null, null, 0]}>
             </Flex>
@@ -30,7 +31,11 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
               alignItems={'center'}
               justifyContent={['flex-start', null, null, 'flex-end']}
             >
-              <ConnectButton />
+              <ConnectButton 
+                label='Get Rugged'
+                accountStatus='address'
+                chainStatus='none'
+              />
             </Flex>
           </SimpleGrid>
         </Container>
@@ -39,7 +44,7 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
         <Container maxWidth="container.xl">{children}</Container>
       </main>
       <footer>
-        <Container mt="8" py="8" maxWidth="container.xl">
+        <Container mt="8" py="8" px="8" maxWidth="container.xl">
           <Text mb="4">
            Made in 🤝 with {' '}
             <Link href="https://www.rugreserach.wtf">rug research</Link>
