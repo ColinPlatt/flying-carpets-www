@@ -23,9 +23,9 @@ const Home: NextPage = () => {
       }}>
         <div className={styles.container}>
           <Head>
-            <title>Warp 💫</title>
+            <title>Flying Rugs 🧞</title>
             <meta
-              name="Warp Token"
+              name="Magic Flying Rugs Tokens"
               content="An experimental crypto art project, in conjunction with Rug Research"
             />
             <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico" />
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
           <main className={styles.main}>          
             
             <h1 className={styles.title}>
-              Welcome to <a href="">Warp</a> {' '}
+              Welcome to <a href="">Flying Rugs</a> {' '}
             </h1>
 
 

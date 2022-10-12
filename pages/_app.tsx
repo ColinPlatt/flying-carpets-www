@@ -26,7 +26,7 @@ const { chains, provider, webSocketProvider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'Warp App',
+  appName: 'Carpet App',
   chains,
 });
 
@@ -54,7 +54,7 @@ const wagmiClient = createClient({
   webSocketProvider,
 });
 
-function WarpApp({ Component, pageProps }: AppProps) {
+function CarpetApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider 
@@ -72,4 +72,4 @@ function WarpApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default WarpApp;
+export default CarpetApp;
