@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef} from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Html } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Object3D } from "three/src/core/Object3D"; //Object3D types
 import { AnimationClip } from "three/src/animation/AnimationClip"; //Animation types
+import { AuthenticationStatus } from "@rainbow-me/rainbowkit";
 
 interface group {
   current: {
@@ -25,8 +26,8 @@ interface actions {
 
 const Model = () => {
   /* Refs */
-  const group: group = useRef();
-  const actions: actions = useRef();
+  const group: any = useRef<group>(null!);
+  const actions: any = useRef<actions>(null!);
 
   /* State */
   const [model, setModel] = useState<Object3D | null>(null);
@@ -60,11 +61,12 @@ const Model = () => {
   /* Animation update */
   useFrame((_, delta) => mixer.update(delta));
   /* Rotation */
-  useFrame(() => {
+  /*useFrame(() => {
     if (typeof group.current != "undefined")
-      return (group.current.rotation.y += 0.00);
+      
+    return (group.current.rotation.y += 0.00);
   });
-
+*/
   return (
     <>
       {model ? (
