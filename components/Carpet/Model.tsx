@@ -34,7 +34,7 @@ const Model = () => {
   const [animation, setAnimation] = useState<AnimationClip[] | null>(null);
 
   /* Mixer */
-  const [mixer] = useState(() => new THREE.AnimationMixer(null));
+  const [mixer] = useState(() => new THREE.AnimationMixer(new Object3D<Event>));
 
   /* Load model */
   useEffect(() => {
