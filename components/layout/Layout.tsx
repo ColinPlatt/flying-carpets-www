@@ -22,11 +22,11 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
             columns={[1, null, 2]}
             alignItems="center"
             justifyContent="space-between"
-            py="8"
             px="8"
           >
             <Flex py={[4, null, null, 0]}>
-            </Flex>
+                An experimental crypto art project.
+          </Flex>
             <Flex
               order={[-1, null, null, 2]}
               alignItems={'center'}
@@ -35,6 +35,7 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
             <SimpleGrid columns={[1,2]}
                         alignItems="center"
                         justifyContent="space-between"
+                        py="2"
               >
               <Flex px="2">
                 <BalanceBox />
@@ -55,7 +56,7 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
         <Container maxWidth="container.xl">{children}</Container>
       </main>
       <footer>
-        <Container mt="8" py="8" px="8" maxWidth="container.xl">
+        <Container mt="8" maxWidth="container.xl">
           <Text mb="4">
            Made in 🤝 with {' '}
             <Link href="https://www.rugreserach.wtf">rug research</Link>
