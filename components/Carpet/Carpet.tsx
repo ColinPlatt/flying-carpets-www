@@ -1,31 +1,22 @@
-import React from "react";
-import { Canvas } from "@react-three/fiber";
-import Lights from "./Light";
-import Model from "./Model";
-import { OrbitControls } from "@react-three/drei";
+import { Suspense } from 'react'
+import { Canvas } from '@react-three/fiber'
+import * as THREE from 'three'
+import { OrbitControls } from "@react-three/drei/core/OrbitControls";
 
- 
+import { Model } from './Model'
 
-const Carpet = () => {
+
+export default function Carpet() {
   return (
-    <>
-      <Canvas camera={{
-          near: 0.1,
-          far: 1000,
-          zoom: 1,
-        }}>
-        <fog 
-          color="#d5f8f8"
-          near={100}
-          far={300}
-        />
-        <Lights />
-        <OrbitControls/>
+    <Canvas 
+    camera={{fov: 75, near: 0.1, far: 1000, position: [0, 0, 5]
+    }}>
+      <Suspense fallback={null}>
         <Model />
-      </Canvas>
-    </>
-  );
-};
-
-
-export default Carpet;
+        <ambientLight intensity={0.1} />
+        <spotLight intensity={0.5} position={[90, 100, 50]} castShadow />
+        <OrbitControls />
+      </Suspense>
+    </Canvas>
+  )
+}

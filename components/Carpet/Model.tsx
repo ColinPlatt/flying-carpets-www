@@ -1,83 +1,61 @@
-import React, { useEffect, useState, useRef} from "react";
-import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { Html } from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Object3D } from "three/src/core/Object3D"; //Object3D types
-import { AnimationClip } from "three/src/animation/AnimationClip"; //Animation types
-import { AuthenticationStatus } from "@rainbow-me/rainbowkit";
+import React, { useRef, useEffect } from "react";
+import { useAnimations } from "@react-three/drei/core/useAnimations";
+import { useGLTF } from "@react-three/drei/core/useGLTF";
+import { GLTF } from "three-stdlib";
 
-interface group {
-  current: {
-    rotation: {
-      x: number;
-      y: number;
-    };
+type GLTFResult = GLTF & {
+  nodes: {
+    Sphere001: THREE.SkinnedMesh;
+    Carpet: THREE.SkinnedMesh;
+    Bone: THREE.Bone;
   };
-}
-
-interface actions {
-  current: {
-    idle: {
-      play: () => void;
-    };
+  materials: {
+    Tassels: THREE.MeshPhysicalMaterial;
+    Carpet: THREE.MeshPhysicalMaterial;
   };
-}
-
-const Model = () => {
-  /* Refs */
-  const group: any = useRef<group>(null!);
-  const actions: any = useRef<actions>(null!);
-
-  /* State */
-  const [model, setModel] = useState<Object3D | null>(null);
-  const [animation, setAnimation] = useState<AnimationClip[] | null>(null);
-
-  /* Mixer */
-  const [mixer] = useState(() => new THREE.AnimationMixer(new Object3D<Event>));
-
-  /* Load model */
-  useEffect(() => {
-    const loader = new GLTFLoader();
-    loader.load("flying_carpet.glb", async (gltf) => {
-      const nodes = await gltf.parser.getDependencies("node");
-      const animations = await gltf.parser.getDependencies("animation");
-      setModel(nodes[0]);
-      setAnimation(animations);
-    });
-  }, []);
-
-  /* Set animation */
-  useEffect(() => {
-    if (animation && typeof group.current != "undefined") {
-      actions.current = {
-        idle: mixer.clipAction(animation[0], group.current as Object3D),
-      };
-      actions.current.idle.play();
-      return () => animation.forEach((clip) => mixer.uncacheClip(clip));
-    }
-  }, [animation]);
-
-  /* Animation update */
-  useFrame((_, delta) => mixer.update(delta));
-  /* Rotation */
-  /*useFrame(() => {
-    if (typeof group.current != "undefined")
-      
-    return (group.current.rotation.y += 0.00);
-  });
-*/
-  return (
-    <>
-      {model ? (
-        <group ref={group} position={[0, 0, 0]} dispose={null}>
-          <primitive ref={group} name="Object_0" object={model} />
-        </group>
-      ) : (
-        <Html>Loading...</Html>
-      )}
-    </>
-  );
+  animations: GLTFAction[];
 };
 
-export default Model;
+type ActionName = "Action";
+interface GLTFAction extends THREE.AnimationClip {
+  name: ActionName;
+}
+
+export function Model(props: JSX.IntrinsicElements["group"]) {
+  const group = useRef<THREE.Group>(null);
+  const { nodes, materials, animations, scene } = useGLTF(
+    "/images/FlyingCarpet_test2.glb"
+  ) as unknown as GLTFResult;
+  
+
+  const { actions, mixer } = useAnimations(animations, group);
+
+  useEffect(() => {
+    actions.Action?.play();
+  }, [mixer]);
+  
+  return (
+    <group ref={group} position={[0, 0, 0]} dispose={null}>
+      <group name="Scene">
+        <group name="Armature">
+          <primitive object={nodes.Bone} />
+          <skinnedMesh
+            name="Sphere001"
+            geometry={nodes.Sphere001.geometry}
+            material={materials.Tassels}
+            skeleton={nodes.Sphere001.skeleton}
+          />
+          <skinnedMesh
+            name="Carpet"
+            geometry={nodes.Carpet.geometry}
+            material={materials.Carpet}
+            skeleton={nodes.Carpet.skeleton}
+          />
+        </group>
+      </group>
+    </group>
+  );
+}
+
+useGLTF.preload("/FlyingCarpet_test2.glb");
