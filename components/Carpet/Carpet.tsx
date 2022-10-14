@@ -9,7 +9,7 @@ import { Model } from './Model'
 export default function Carpet() {
   return (
     <Canvas 
-    camera={{fov: 75, near: 0.1, far: 1000, position: [0, 0, 5]
+    camera={{fov: 50, near: 0.1, far: 1000, position: [7.5, 5, 0]
     }}>
       <Suspense fallback={null}>
         <Model />
