@@ -7,6 +7,27 @@ import { Cloud } from "@react-three/drei/core/Cloud";
 
 import { Model } from './Model'
 
+interface CloudsProps {
+  clouds: typeof Cloud[];
+}
+
+const CloudsComponent = () => (
+  <>
+    <Cloud position={[-4, -20, -25]} speed={0.2} opacity={0.1} />
+    <Cloud position={[4, 2, -15]} speed={0.2} opacity={0.5} />
+    <Cloud position={[-4, 2, -10]} speed={0.2} opacity={.25} />
+    <Cloud position={[4, -20, -5]} speed={0.2} opacity={0.5} />
+    <Cloud position={[4, 2, 0]} speed={0.2} opacity={0.25} />
+  </>
+);
+
+/*
+  return [<Cloud position={[-4, -20, -25]} speed={0.2} opacity={0.1} />,
+          <Cloud position={[4, 2, -15]} speed={0.2} opacity={0.5} />,
+          <Cloud position={[-4, 2, -10]} speed={0.2} opacity={.25} />,
+          <Cloud position={[4, -20, -5]} speed={0.2} opacity={0.5} />,
+          <Cloud position={[4, 2, 0]} speed={0.2} opacity={0.25} />];
+*/
 
 export default function Carpet() {
   return (
@@ -18,11 +39,7 @@ export default function Carpet() {
         <ambientLight intensity={0.5} />
         <pointLight intensity={1} position={[0, 0, -1000]} />
         <OrbitControls />
-        <Cloud position={[-4, -2, -25]} speed={0.2} opacity={0.1} />
-        <Cloud position={[4, 2, -15]} speed={0.2} opacity={0.5} />
-        <Cloud position={[-4, 2, -10]} speed={0.2} opacity={.25} />
-        <Cloud position={[4, -2, -5]} speed={0.2} opacity={0.5} />
-        <Cloud position={[4, 2, 0]} speed={0.2} opacity={0.25} />
+        <CloudsComponent />
       </Suspense>
       <Sky azimuth={0.01} turbidity={5} rayleigh={0.1} inclination={0.6} distance={1000} />
     </Canvas>
