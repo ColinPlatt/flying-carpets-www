@@ -24,7 +24,7 @@ const Home: NextPage = () => {
           <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico" />
         </Head>
         <div className={styles.scene}>
-          <Carpet />
+          <Carpet/>
         </div>
       </div>
     </Layout>
