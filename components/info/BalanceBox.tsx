@@ -1,4 +1,4 @@
-import { Box, Flex, SimpleGrid } from '@chakra-ui/react'
+/*import { Box, Flex, SimpleGrid } from '@chakra-ui/react'
 import '@rainbow-me/rainbowkit/styles.css';
 
 
@@ -34,3 +34,4 @@ export const BalanceBox = (): JSX.Element => {
       </Box>
     )
   }
+  */

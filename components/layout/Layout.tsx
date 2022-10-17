@@ -1,3 +1,4 @@
+/*
 import { Container, Flex, Link, SimpleGrid, Text } from '@chakra-ui/react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { BalanceBox } from '../info/BalanceBox'
@@ -66,3 +67,4 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
     </>
   )
 }
+*/
